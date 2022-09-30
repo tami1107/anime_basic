@@ -33,10 +33,12 @@ SceneMain::~SceneMain()
 void SceneMain::init()
 {
 	LoadDivGraph(kPlayerGraphicFilename, 12,
-		3, 4,
-		32, 32, m_hPlayerGraphic);
-
-	m_player.setHandle(m_hPlayerGraphic[4]);
+		kPlayerGraphicDivX, kPlayerGraphicDivY,
+		kPlayerGraphicSizeX, kPlayerGraphicSizeY, m_hPlayerGraphic);
+	for (int i = 0; i < kPlayerGraphicDivNum; i++)
+	{
+		m_player.setHandle(i,m_hPlayerGraphic[i]);
+	}
 	m_player.init();
 }
 
