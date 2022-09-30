@@ -2,6 +2,21 @@
 #include <cassert>
 #include "SceneMain.h"
 
+namespace
+{
+	// グラフィックファイル名
+	const char* const kPlayerGraphicFilename = "data/char.png";
+
+	// プレイヤーグラフィック分割数
+	constexpr int kPlayerGraphicDivX = 3;
+	constexpr int kPlayerGraphicDivY = 4;
+	constexpr int kPlayerGraphicDivNum = kPlayerGraphicDivX * kPlayerGraphicDivY;
+
+	// プレイヤーグラフィックサイズ
+	constexpr int kPlayerGraphicSizeX = 32;
+	constexpr int kPlayerGraphicSizeY = 32;
+}
+
 SceneMain::SceneMain()
 {
 	for (auto& handle : m_hPlayerGraphic)
@@ -17,7 +32,7 @@ SceneMain::~SceneMain()
 // 初期化
 void SceneMain::init()
 {
-	LoadDivGraph("data/char.png", 12,
+	LoadDivGraph(kPlayerGraphicFilename, 12,
 		3, 4,
 		32, 32, m_hPlayerGraphic);
 
