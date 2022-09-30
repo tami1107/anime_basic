@@ -4,7 +4,10 @@
 
 SceneMain::SceneMain()
 {
-	m_hPlayerGraphic = -1;
+	for (auto& handle : m_hPlayerGraphic)
+	{
+		handle = -1;
+	}
 }
 SceneMain::~SceneMain()
 {
@@ -14,15 +17,22 @@ SceneMain::~SceneMain()
 // ‰Šú‰»
 void SceneMain::init()
 {
-	m_hPlayerGraphic = LoadGraph("data/char.png");
-	m_player.setHandle(m_hPlayerGraphic);
+	LoadDivGraph("data/char.png", 12,
+		3, 4,
+		32, 32, m_hPlayerGraphic);
+
+	m_player.setHandle(m_hPlayerGraphic[4]);
 	m_player.init();
 }
 
 // I—¹ˆ—
 void SceneMain::end()
 {
-	DeleteGraph(m_hPlayerGraphic);
+	for (auto& handle : m_hPlayerGraphic)
+	{
+		DeleteGraph(m_hPlayerGraphic[4]); handle = -1;
+	}
+	
 }
 
 // –ˆƒtƒŒ[ƒ€‚Ìˆ—
